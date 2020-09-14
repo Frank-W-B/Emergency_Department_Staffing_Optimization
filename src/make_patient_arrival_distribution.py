@@ -57,6 +57,16 @@ def create_hourly_acuity_level_distribution(df_arrival):
     df_adist.drop(columns=cols, inplace=True)
     return df_adist
 
+def create_cumsum_acuity_probability(df_adist):
+    cumsum_lst = []
+    nrows = df_adist.shape[0]
+    for row in range(nrows):
+       cumsum = df_adist.loc[row,:].cumsum()
+       cumsum_lst.append(cumsum.values)
+    cols = df_adist.columns
+    df_adist_cumsum = pd.DataFrame(data=cumsum_lst, columns=cols)
+    return df_adist_cumsum
+
 def plot_hourly_acuity_level_distribution(hours, df_adist):
     cols = df_adist.columns.copy() 
     fig, ax = plt.subplots(figsize=(11,5))
@@ -102,8 +112,11 @@ if __name__ == '__main__':
     df_pdist.to_csv('./data/patient_arrival_distribution.csv')
     plot_hourly_patient_arrival_distributions(df_arrival.index, df_arrival['a6'], stds)
     df_adist = create_hourly_acuity_level_distribution(df_arrival)
+    df_adist_cumsum = create_cumsum_acuity_probability(df_adist)
     df_adist = df_adist.round(4)
     df_adist.to_csv('./data/acuity_distribution.csv')
+    df_adist_cumsum = df_adist_cumsum.round(4)
+    df_adist_cumsum.to_csv('./data/acuity_distribution_cumsum.csv')
     plot_hourly_acuity_level_distribution(df_adist.index, df_adist.copy())
 
 
