@@ -71,7 +71,7 @@ def plot_hourly_acuity_level_distribution(hours, df_adist):
     cols = df_adist.columns.copy() 
     fig, ax = plt.subplots(figsize=(11,5))
     colors = [(0, 0.42, 0.64), (0.63, 0.78, 0.93), (0.67, 0.67, 0.67),
-              (1, 0.74, 0.47), (1.00, 0.50, 0.05), (0.78, 0.32, 0)]
+              (1, 0.74, 0.47), (1.00, 0.50, 0.05), (0.78, 0.12, 0)]
     df_adist['0-pa1'] = df_adist['pa1']
     df_adist['0-pa2'] = df_adist['pa1'] + df_adist['pa2']
     df_adist['0-pa3'] = df_adist['pa1'] + df_adist['pa2'] + df_adist['pa3'] 
@@ -113,9 +113,7 @@ if __name__ == '__main__':
     plot_hourly_patient_arrival_distributions(df_arrival.index, df_arrival['a6'], stds)
     df_adist = create_hourly_acuity_level_distribution(df_arrival)
     df_adist_cumsum = create_cumsum_acuity_probability(df_adist)
-    df_adist = df_adist.round(4)
     df_adist.to_csv('./data/acuity_distribution.csv')
-    df_adist_cumsum = df_adist_cumsum.round(4)
     df_adist_cumsum.to_csv('./data/acuity_distribution_cumsum.csv')
     plot_hourly_acuity_level_distribution(df_adist.index, df_adist.copy())
 
