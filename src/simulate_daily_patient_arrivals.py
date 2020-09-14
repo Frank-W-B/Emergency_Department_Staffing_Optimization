@@ -116,4 +116,3 @@ if __name__ == '__main__':
     n_sim = 5 # number of days
     days = [simulate_daily_arrivals(df_acuity, df_arrival) for _ in range(n_sim)]
     plot_several_days(days, colors, 'multi-day_arrival_simulation.png')
-
