@@ -10,7 +10,7 @@ a realistic example of hourly patient arrivals and acuity levels at an ED.
 
 <img src="./images/Figure_1_EDSP.png" alt="drawing" width="500"/>
 
-The patient arrivel means and Coefficients of Variance (standard deviation / mean) 
+The patient arrival means and Coefficients of Variance (standard deviation / mean) 
 are calculated hourly, and the distributions of patient acuity levels (1-6) are 
 shown by the relative heights of the shaded regions in the figure.
 
