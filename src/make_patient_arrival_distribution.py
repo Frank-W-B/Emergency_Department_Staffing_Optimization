@@ -103,7 +103,7 @@ if __name__ == '__main__':
     plot_hourly_patient_arrival_distributions(df_arrival.index, df_arrival['a6'], stds)
     df_adist = create_hourly_acuity_level_distribution(df_arrival)
     df_adist = df_adist.round(4)
-    df_adist.to_csv('./data/acuity_distribtuion.csv')
+    df_adist.to_csv('./data/acuity_distribution.csv')
     plot_hourly_acuity_level_distribution(df_adist.index, df_adist.copy())
 
 
